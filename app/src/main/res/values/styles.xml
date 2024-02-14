@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- ... other theme attributes ... -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Add a custom style for the Spinner -->
+        <item name="spinnerStyle">@style/MaterialSpinner</item>
+    </style>
+
+    <!-- Custom style for the Spinner -->
+    <style name="MaterialSpinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/material_spinner_background</item>
+        <item name="android:dropDownSelector">@drawable/material_spinner_dropdown_selector</item>
+        <item name="android:popupBackground">@drawable/material_spinner_popup_background</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textColor">@color/material_spinner_text_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+
+    <style name="detailsStyle">
+        <item name="android:layout_width">320dp</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:background">@drawable/shape</item>
+        <item name="android:drawableLeft">@drawable/baseline_person_2_24</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">text</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:textColorHint">#000000</item>
+    </style>
+
+    <style name="phoneStyle">
+        <item name="android:layout_width">350dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:background">@drawable/shape</item>
+        <item name="android:drawableLeft">@drawable/number</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">text</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:textColorHint">#000000</item>
+    </style>
+</resources>

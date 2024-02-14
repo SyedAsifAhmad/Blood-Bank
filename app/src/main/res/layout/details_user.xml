@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:padding="6dp"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/NameText"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:ems="10"
+           android:layout_centerHorizontal="true"
+            android:background="@drawable/backgroundedit"
+            android:hint="Enter Full Name"
+            android:textColor="@color/black"
+            android:drawableRight="@drawable/baseline_person_2_24"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/TextPhone"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/NameText"
+            android:ems="10"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:hint="Phone Number"
+            android:background="@drawable/backgroundedit"
+            android:drawableRight="@drawable/phoneicon"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/EmailText"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:layout_below="@id/TextPhone"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/backgroundedit"
+            android:hint="Enter Email"
+            android:textColor="@color/black"
+            android:drawableRight="@drawable/email"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/bloodType"
+            android:background="@drawable/backgroundedit"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/EmailText"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:drawableRight="@drawable/bloodtype"
+            android:padding="10dp"
+            android:ems="10"
+            android:hint="Blood Type"
+            android:inputType="text" />
+
+
+
+
+<!--        <Spinner-->
+<!--            android:id="@+id/bloodSpinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/bloodType"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginHorizontal="16dp"/>-->
+
+        <EditText
+            android:id="@+id/GenderText"
+            android:layout_width="330dp"
+            android:layout_below="@id/bloodType"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:drawableRight="@drawable/gender"
+            android:padding="10dp"
+            android:ems="10"
+            android:background="@drawable/backgroundedit"
+            android:hint="Gender"
+            android:inputType="text" />
+
+<!--        <Spinner-->
+<!--            android:id="@+id/GenderSpinner"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/GenderText"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginHorizontal="16dp"/>-->
+
+        <EditText
+            android:id="@+id/dobText"
+            android:layout_width="330dp"
+            android:layout_below="@id/GenderText"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/backgroundedit"
+            android:hint="Enter Date of Birth"
+            android:textColor="@color/black"
+            android:drawableRight="@drawable/dob"
+            android:padding="10dp"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/disseaseText"
+            android:layout_width="330dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:drawableRight="@drawable/dissease"
+            android:background="@drawable/backgroundedit"
+            android:layout_below="@id/dobText"
+            android:padding="10dp"
+            android:ems="10"
+            android:hint="Blood Dissease (if any)"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+
+        <Button
+            android:id="@+id/saveeBtn"
+            android:layout_width="190dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="#000000"
+            android:onClick="showOptionsPopup"
+            android:text="Update"
+            android:layout_below="@id/disseaseText"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF" />
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="material_spinner_background_color">#FFEB3B</color>
+    <color name="material_spinner_dropdown_pressed_color">#FFC107</color>
+    <color name="material_spinner_popup_background_color">#FFFFFF</color>
+    <color name="material_spinner_text_color">#333333</color>
+
+    <color name="colorPrimary">#FFEB3B</color>
+    <color name="colorPrimaryDark">#FFC107</color>
+    <color name="colorAccent">#FF4081</color>
+
+</resources>

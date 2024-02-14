@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    
+    tools:context=".DonarForm">
+
+    <EditText
+        android:id="@+id/fullNameText"
+        style="@style/detailsStyle"
+        android:layout_marginTop="25dp"
+        android:drawableLeft="@drawable/baseline_person_2_24"
+        android:drawablePadding="10dp"
+        android:hint="Full Name"
+        android:background="@drawable/backgroundedit"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/PhoneNo"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/phoneicon"
+        android:drawablePadding="10dp"
+        android:background="@drawable/backgroundedit"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="text"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/EmailText"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/email"
+        android:background="@drawable/backgroundedit"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="text"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/bloodType"
+        android:background="@drawable/backgroundedit"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/bloodtype"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Blood Type"
+        android:inputType="text" />
+
+
+    <Spinner
+        android:id="@+id/bloodSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bloodType"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <EditText
+        android:id="@+id/GenderText"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/gender"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:background="@drawable/backgroundedit"
+        android:hint="Gender"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/GenderSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GenderText"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <EditText
+        android:id="@+id/dobText"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/dob"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:background="@drawable/backgroundedit"
+        android:hint="Date of Birth"
+        android:inputType="text"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/disseaseText"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/dissease"
+        android:background="@drawable/backgroundedit"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Blood Dissease (if any)"
+        android:inputType="text"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/svaeBtn"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#000000"
+        android:onClick="showOptionsPopup"
+        android:text="Save"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF" />
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-400dp"
+        android:layout_gravity="center">
+
+        <!-- Your existing layout components -->
+
+        <ProgressBar
+            android:id="@+id/BarProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:visibility="gone" /> <!-- Initially hide the ProgressBar -->
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BloodRequest">
+
+
+    <EditText
+        android:id="@+id/TextFull_Name"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:background="@drawable/backgroundedit"
+        android:layout_height="55dp"
+        android:layout_marginTop="50dp"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/Text_Email"
+        style="@style/detailsStyle"
+        android:background="@drawable/backgroundedit"
+        android:layout_width="320dp"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/email"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="text"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/Text_bloodType"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:background="@drawable/backgroundedit"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/bloodtype"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:hint="Blood Type"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/Spinner_blood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bloodType"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <EditText
+        android:id="@+id/Text_Phone"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:background="@drawable/backgroundedit"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/phoneicon"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/requets_forText"
+        style="@style/detailsStyle"
+        android:layout_width="320dp"
+        android:background="@drawable/backgroundedit"
+        android:layout_height="55dp"
+        android:drawableLeft="@drawable/gender"
+        android:ems="10"
+        android:hint="Request for"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/Spinner_requestFor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/requets_forText"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"/>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        />
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-340dp"
+        android:layout_gravity="center">
+
+        <!-- Your existing layout components -->
+
+        <ProgressBar
+            android:id="@+id/BarProgress"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:visibility="gone" /> <!-- Initially hide the ProgressBar -->
+
+    </FrameLayout>
+
+</LinearLayout>
