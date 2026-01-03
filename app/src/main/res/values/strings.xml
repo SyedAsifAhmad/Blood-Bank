@@ -54,4 +54,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_acceptor">Acceptor</string>
+    <string name="welcome_tag">A pint of blood equals a gift of life. Connect with those in need, donate today, and transform lives together.</string>
+    <string name="create_an_account_tag">Create an account to continue to Donate Life.</string>
 </resources>

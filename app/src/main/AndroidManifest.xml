@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- SDK Versions -->
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="34" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -19,80 +20,81 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DonateLife"
         tools:targetApi="31">
+
         <activity
-            android:name=".UserDetails"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
-        <activity
-            android:name=".Blood_Types_info"
-            android:exported="false" />
-        <activity
-            android:name=".PersonalDetails"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
-            android:name=".Chat"
-            android:exported="false" />
-        <activity
-            android:name=".ChatDetails"
-            android:exported="false" />
-        <activity
-            android:name=".UsersDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Acceptors"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
-            android:name=".List_view"
-            android:exported="false" />
-        <activity
-            android:name=".RequestList"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
-            android:name=".BloodRequest"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-        <activity
-            android:name=".Acceptor"
-            android:exported="false"
-            android:label="@string/title_activity_acceptor"
-            android:theme="@style/Theme.DonateLife" />
-        <activity
-            android:name=".Accept"
-            android:exported="false"
-            android:label="@string/title_activity_accept"
-            android:theme="@style/Theme.DonateLife" />
-        <activity
-            android:name=".DonarForm"
+            android:name="com.asifahmad.donatelife.Welcome"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- Splash (Optional, but no launcher) -->
         <activity
             android:name=".Splash"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".Login"
             android:exported="true" />
+
         <activity
             android:name=".SignUp"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
+        <activity
+            android:name=".DonarForm"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <activity
+            android:name=".BloodRequest"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <activity
+            android:name=".RequestList"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <activity
+            android:name=".Acceptors"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <activity
+            android:name=".Chat"
+            android:exported="false" />
+
+        <activity
+            android:name=".PersonalDetails"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+        <activity
+            android:name=".Blood_Types_info"
+            android:exported="false" />
+
+        <activity
+            android:name=".UserDetails"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace 'com.asifahmad.donatelife'
-    compileSdk 34
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.asifahmad.donatelife"
-        minSdk 21
+        minSdk 23
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -41,21 +41,23 @@ android {
 dependencies {
 
 
-    implementation 'com.google.android.gms:play-services-auth:20.7.0'
+    implementation 'com.google.android.gms:play-services-auth:21.4.0'
 
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation 'com.github.bumptech.glide:glide:5.0.5'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.gms:play-services-base:15.0.1'
-    implementation 'com.google.firebase:firebase-auth:22.3.0'
-    implementation 'com.google.firebase:firebase-common:20.4.2'
-    implementation 'com.google.firebase:firebase-firestore:24.10.0'
-    implementation 'androidx.navigation:navigation-fragment:2.5.3'
-    implementation 'androidx.navigation:navigation-ui:2.5.3'
-    implementation 'androidx.datastore:datastore-core-android:1.1.0-alpha07'
-    implementation 'com.google.firebase:firebase-storage:20.3.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'com.google.android.gms:play-services-base:18.9.0'
+    implementation 'com.google.firebase:firebase-auth:24.0.1'
+    implementation 'com.google.firebase:firebase-common:22.0.1'
+    implementation 'com.google.firebase:firebase-firestore:26.0.2'
+    implementation 'androidx.navigation:navigation-fragment:2.9.6'
+    implementation 'androidx.navigation:navigation-ui:2.9.6'
+    implementation 'androidx.datastore:datastore-core-android:1.2.0'
+    implementation 'com.google.firebase:firebase-storage:22.0.1'
+    implementation 'androidx.activity:activity:1.12.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
