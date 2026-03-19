@@ -46,7 +46,7 @@
         <activity
             android:name=".SignUp"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+            />
 
         <activity
             android:name=".MainActivity"
@@ -79,8 +79,8 @@
 
         <activity
             android:name=".PersonalDetails"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+            android:exported="true"
+            />
 
         <activity
             android:name=".Blood_Types_info"

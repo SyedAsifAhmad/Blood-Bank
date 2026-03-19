@@ -1,116 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
+    <!-- Scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/profile_Image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="14dp"
-        android:src="@drawable/prfileimage" />
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/acceptCard"
-        android:layout_width="155dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="90dp"
-        android:layout_marginTop="60dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp">
-
-        <ImageView
-            android:id="@+id/acceptImage"
-            android:layout_width="132dp"
-            android:layout_height="106dp"
-            android:layout_margin="15dp"
-            android:padding="20dp"
-            app:srcCompat="@drawable/donate" />
-
-        <TextView
-            android:id="@+id/donateText"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="120dp"
-            android:text="Donar's List"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
 
-    </androidx.cardview.widget.CardView>
+            <!-- TOP CARD -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:cardElevation="10dp"
+                app:cardCornerRadius="20dp"
+                app:shapeAppearanceOverlay="@style/BottomRoundedCard">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <!-- LEFT TEXT -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome, Dear"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Let's make a difference together" />
+
+                    </LinearLayout>
+
+                    <!-- RIGHT PROFILE -->
+                    <ImageView
+                        android:id="@+id/profile_Image"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/prfileimage" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="Quick Actions"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"/>
+
+            <!-- GRID CARDS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <!-- ROW 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Donor List -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/acceptCard"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/acceptImage"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_find_donor" />
+
+                            <TextView
+                                android:id="@+id/donateText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Find Donor"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Request -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/requestList_card"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_blood_drop" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Book Request"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/requestList_card"
-        android:layout_width="155dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="90dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="-150dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp">
+                <!-- ROW 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="132dp"
-            android:layout_height="106dp"
-            android:layout_margin="15dp"
-            android:padding="20dp"
-            android:src="@drawable/requestform">
+                    <!-- Blood Info -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bloodInfo_card"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
 
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-        </ImageView>
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_warning" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="120dp"
-            android:text="@string/requestblood"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="My Request"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
+                    </androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
+                    <!-- NEW CARD -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/newCard"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/bloodInfo_card"
-        android:layout_width="155dp"
-        android:layout_height="150dp"
-        android:layout_marginRight="90dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="20dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="132dp"
-            android:layout_height="106dp"
-            android:layout_margin="15dp"
-            android:padding="20dp"
-            android:src="@drawable/bloodinfo"/>
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:src="@drawable/ic_location" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:layout_marginTop="120dp"
-            android:textColor="@color/black"
-            android:text="Blood Info"
-            android:textStyle="bold"
-            android:layout_height="match_parent"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Centers"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
+    <!-- FLOATING BUTTON -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/donateFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Donate Now"
+        app:icon="@drawable/donate"
+        app:layout_anchorGravity="bottom|end" />
 
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,38 +1,36 @@
 package com.asifahmad.donatelife;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 
 
 public class MainActivity extends AppCompatActivity {
 
-    CardView  acceptCard, RequestListCard, bloodInfo;
+    CardView acceptCard, RequestListCard, bloodInfo;
     FirebaseFirestore db;
     ImageView profile_image;
+    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser currentUser = auth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_Image);
 
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
 
-       // StorageReference profilePictureRef = FirebaseStorage.getInstance().getReference().child("images/").child(userId);
+        // StorageReference profilePictureRef = FirebaseStorage.getInstance().getReference().child("images/").child(userId);
 
 
         if (currentUser != null) {
-            StorageReference profilePictureRef = FirebaseStorage.getInstance().getReference().child("images/"+userId).child(userId);
+            StorageReference profilePictureRef = FirebaseStorage.getInstance().getReference().child("images/" + userId).child(userId);
 
             profilePictureRef.getDownloadUrl()
                     .addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -77,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         db = FirebaseFirestore.getInstance();
         ActionBar actionBar = getSupportActionBar();
 
@@ -92,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
         acceptCard = findViewById(R.id.acceptCard);
 
         RequestListCard = findViewById(R.id.requestList_card);
-       // requestCard = findViewById(R.id.requestCard);
+        // requestCard = findViewById(R.id.requestCard);
 
         RequestListCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,RequestList.class);
+                Intent i = new Intent(MainActivity.this, RequestList.class);
                 startActivity(i);
             }
         });
@@ -120,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     @Override
@@ -135,7 +126,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.logout) {
 
-            Intent intent = new Intent(this, Login.class);
+            auth.signOut();
+
+            Intent intent = new Intent(this, SignUp.class);
             startActivity(intent);
             return true;
         }
