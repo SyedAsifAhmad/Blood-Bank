@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Scroll -->
-    <ScrollView
+    <!-- Use NestedScrollView instead of ScrollView -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -15,13 +18,14 @@
             android:orientation="vertical"
             android:padding="12dp">
 
-            <!-- TOP CARD -->
+            <!--  TOP CARD -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:cardElevation="10dp"
+                android:layout_margin="6dp"
+                app:cardElevation="8dp"
                 app:cardCornerRadius="20dp"
-                app:shapeAppearanceOverlay="@style/BottomRoundedCard">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -32,211 +36,111 @@
                     <!-- LEFT TEXT -->
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Welcome, Dear"
-                            android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:text="Let's make a difference together"
                             android:layout_marginTop="6dp"
-                            android:text="Let's make a difference together" />
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
 
-                    <!-- RIGHT PROFILE -->
+                    <!-- PROFILE -->
                     <ImageView
                         android:id="@+id/profile_Image"
                         android:layout_width="90dp"
                         android:layout_height="90dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/prfileimage" />
+                        android:src="@drawable/prfileimage"/>
 
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
+            <!-- QUICK ACTIONS -->
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_marginTop="16dp"
+                android:text="Quick Actions"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:text="Quick Actions"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <!-- GRID CARDS -->
+            <!-- GRID ACTION CARDS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="12dp">
 
                 <!-- ROW 1 -->
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <!-- Donor List -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/acceptCard"
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:id="@+id/acceptImage"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/ic_find_donor" />
-
-                            <TextView
-                                android:id="@+id/donateText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Find Donor"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Request -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/requestList_card"
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/ic_blood_drop" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Book Request"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
+                    <include layout="@layout/item_home_card" android:id="@+id/card1"/>
+                    <include layout="@layout/item_home_card" android:id="@+id/card2"/>
 
                 </LinearLayout>
-
 
                 <!-- ROW 2 -->
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <!-- Blood Info -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/bloodInfo_card"
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp">
+                    <include layout="@layout/item_home_card" android:id="@+id/card3"/>
+                    <include layout="@layout/item_home_card" android:id="@+id/card4"/>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/ic_warning" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="My Request"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- NEW CARD -->
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/newCard"
-                        android:layout_width="0dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="6dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:src="@drawable/ic_location" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Centers"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
 
-    <!-- FLOATING BUTTON -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/donateFab"
+            <!--  RECENT REQUESTS -->
+            <TextView
+                android:text="Recent Requests"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <!-- Horizontal RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/blood_request_card"/>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/fab_margin"
         android:text="Donate Now"
-        app:icon="@drawable/donate"
-        app:layout_anchorGravity="bottom|end" />
+        app:icon="@drawable/ic_donate_blood" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

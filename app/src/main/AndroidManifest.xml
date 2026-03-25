@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- SDK Versions -->
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- SDK -->
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="34" />
-
-    <!-- Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +22,9 @@
         android:theme="@style/Theme.DonateLife"
         tools:targetApi="31">
 
+        <!-- Launcher Activity -->
         <activity
-            android:name="com.asifahmad.donatelife.Welcome"
+            android:name=".Welcome"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
@@ -33,63 +35,22 @@
 
         </activity>
 
-        <!-- Splash (Optional, but no launcher) -->
-        <activity
-            android:name=".Splash"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".Splash" android:exported="true" />
+        <activity android:name=".Login" android:exported="true" />
+        <activity android:name=".SignUp" android:exported="true" />
+        <activity android:name=".MainActivity" android:exported="true" />
+        <activity android:name=".AddDonations" android:exported="true" />
+        <activity android:name=".BloodRequest" android:exported="false" />
+        <activity android:name=".RequestList" android:exported="false" />
+        <activity android:name=".Acceptors" android:exported="false" />
+        <activity android:name=".Chat" android:exported="false" />
+        <activity android:name=".PersonalDetails" android:exported="true" />
+        <activity android:name=".Blood_Types_info" android:exported="false" />
 
+        <!-- ✅ NEW ACTIVITY ADDED HERE -->
         <activity
-            android:name=".Login"
+            android:name=".UserProfile"
             android:exported="true" />
-
-        <activity
-            android:name=".SignUp"
-            android:exported="true"
-            />
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-        <activity
-            android:name=".DonarForm"
-            android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-        <activity
-            android:name=".BloodRequest"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-        <activity
-            android:name=".RequestList"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-        <activity
-            android:name=".Acceptors"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-
-        <activity
-            android:name=".Chat"
-            android:exported="false" />
-
-        <activity
-            android:name=".PersonalDetails"
-            android:exported="true"
-            />
-
-        <activity
-            android:name=".Blood_Types_info"
-            android:exported="false" />
-
-        <activity
-            android:name=".UserDetails"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"

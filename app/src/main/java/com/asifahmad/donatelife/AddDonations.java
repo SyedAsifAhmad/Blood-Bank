@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DonarForm extends AppCompatActivity {
+public class AddDonations extends AppCompatActivity {
 
     EditText hospitalText, locationText, notesText;
     Button submitBtn;
@@ -26,7 +26,7 @@ public class DonarForm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donar_form);
+        setContentView(R.layout.activity_add_donations);
 
         initializeViews();
         DonationViewModel viewModel = new ViewModelProvider(this).get(DonationViewModel.class);

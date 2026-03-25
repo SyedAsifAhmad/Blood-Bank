@@ -157,16 +157,42 @@
 
         </LinearLayout>
 
-        <!-- 🔻 BUTTON -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/contactBtn"
+        <!-- 🔻 ACTION BUTTONS -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="Contact"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#E53935"
-            app:cornerRadius="10dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp">
+
+            <!-- Call Button -->
+            <Button
+                android:id="@+id/callBtn"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Call"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#43A047"
+                app:cornerRadius="10dp"
+                android:layout_marginEnd="6dp"
+                app:icon="@drawable/ic_call"
+                app:iconTint="@android:color/white"/>
+
+            <!-- Message Button -->
+            <Button
+                android:id="@+id/messageBtn"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="Message"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#1E88E5"
+                app:cornerRadius="10dp"
+                android:layout_marginStart="6dp"
+                app:icon="@drawable/ic_message"
+                app:iconTint="@android:color/white"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -7,200 +7,68 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.*;
+import com.google.firebase.storage.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class PersonalDetails extends AppCompatActivity {
 
-    ActionBar actionBar;
+    private EditText NameText, cityText, DobText, BloodDisease, Phone;
+    private AutoCompleteTextView bloodSpinner, GenderSpinner;
+    private ImageView profileImage, buttonAdd;
+    private Button saveBtn;
+    private FirebaseFirestore db;
+    private StorageReference storageReference;
+    private FirebaseAuth firebaseAuth;
 
-    EditText NameText, cityText, DobText, BloodDisease, Phone;
-    AutoCompleteTextView bloodSpinner, GenderSpinner;
+    private Uri image;
+    private Calendar calendar;
 
-    ProgressBar progressBar;
-    ImageView profileImage, buttonAdd;
-    Button saveBtn;
-    FirebaseFirestore db;
-    StorageReference storageReference;
-    Uri image;
-    private final ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+    // Image picker
+    private final ActivityResultLauncher<Intent> resultLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
 
-        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-            image = result.getData().getData();
-            Glide.with(getApplicationContext()).load(image).into(profileImage);
-        } else {
-            Toast.makeText(PersonalDetails.this, "Please select an image", Toast.LENGTH_SHORT).show();
-        }
-    });
-    Calendar calendar;
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    image = result.getData().getData();
+                    Glide.with(this).load(image).into(profileImage);
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_details);
 
-        initializeViews();
-
-        actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle("Personal Details");
-        }
-
         FirebaseApp.initializeApp(this);
 
-        db = FirebaseFirestore.getInstance();
-        storageReference = FirebaseStorage.getInstance().getReference();
-        calendar = Calendar.getInstance();
-
-        DobText.setOnClickListener(v -> new DatePickerDialog(PersonalDetails.this, (view, year, month, dayOfMonth) -> {
-            calendar.set(Calendar.YEAR, year);
-            calendar.set(Calendar.MONTH, month);
-            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-            String format = "dd/MM/yyyy";
-            SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.getDefault());
-            DobText.setText(sdf.format(calendar.getTime()));
-        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show());
-
-
-        String[] bloodTypes = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
-
-        ArrayAdapter<String> bloodAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, bloodTypes);
-
-        bloodSpinner.setAdapter(bloodAdapter);
-
-        String[] genders = {"Male", "Female", "Prefer not to say"};
-
-        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, genders);
-
-        GenderSpinner.setAdapter(genderAdapter);
-
-        buttonAdd.setOnClickListener(v -> {
-
-            Intent i = new Intent(Intent.ACTION_PICK);
-            i.setType("image/*");
-            resultLauncher.launch(i);
-
-        });
-
-        saveBtn.setOnClickListener(v -> {
-
-            Map<String, Object> userDetails = new HashMap<>();
-
-            boolean allFieldsFilled = true;
-
-            if (NameText.getText().toString().trim().isEmpty()) {
-                NameText.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("Name", NameText.getText().toString().trim());
-            }
-
-            if (cityText.getText().toString().trim().isEmpty()) {
-                cityText.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("Email", cityText.getText().toString().trim());
-            }
-
-            if (Phone.getText().toString().trim().isEmpty()) {
-                Phone.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("PhoneNumber", Phone.getText().toString().trim());
-            }
-
-            if (bloodSpinner.getText().toString().trim().isEmpty()) {
-                bloodSpinner.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("BloodType", bloodSpinner.getText().toString());
-            }
-
-            if (GenderSpinner.getText().toString().trim().isEmpty()) {
-                GenderSpinner.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("Gender", GenderSpinner.getText().toString());
-            }
-
-            if (DobText.getText().toString().trim().isEmpty()) {
-                DobText.setError("Required");
-                allFieldsFilled = false;
-            } else {
-                userDetails.put("DOB", DobText.getText().toString());
-            }
-
-            userDetails.put("Disease", BloodDisease.getText().toString().trim());
-
-
-            if (!allFieldsFilled) {
-
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (image == null) {
-
-                Toast.makeText(this, "Please select image", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            String userEmail = cityText.getText().toString();
-
-            DocumentReference documentReference = db.collection("users").document(userEmail);
-
-            StorageReference reference = storageReference.child("images/" + UUID.randomUUID().toString());
-
-            reference.putFile(image).addOnSuccessListener(taskSnapshot -> {
-                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                    userDetails.put("ImageUrl", uri.toString());
-                    documentReference.set(userDetails).addOnSuccessListener(unused -> {
-
-                        Toast.makeText(PersonalDetails.this, "Details added Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(PersonalDetails.this, MainActivity.class));
-
-                    }).addOnFailureListener(e -> {
-                        Log.w(TAG, "Error adding document", e);
-                    });
-
-                });
-
-            }).addOnFailureListener(e -> {
-
-                Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show();
-
-            });
-
-        });
-
+        initFirebase();
+        initViews();
+        setupSpinners();
+        setupDatePicker();
+        setupListeners();
     }
 
-    void initializeViews() {
+    //  Init Firebase
+    private void initFirebase() {
+        db = FirebaseFirestore.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        calendar = Calendar.getInstance();
+    }
+
+    //  Init Views
+    private void initViews() {
         NameText = findViewById(R.id.NameText);
         cityText = findViewById(R.id.cityText);
         DobText = findViewById(R.id.dobText);
@@ -211,9 +79,108 @@ public class PersonalDetails extends AppCompatActivity {
         GenderSpinner = findViewById(R.id.GenderSpinner);
 
         profileImage = findViewById(R.id.profileImg);
-
         buttonAdd = findViewById(R.id.add_button);
         saveBtn = findViewById(R.id.saveBtn);
+    }
 
+    //  Spinners
+    private void setupSpinners() {
+        String[] bloodTypes = {"A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"};
+        bloodSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, bloodTypes));
+
+        String[] genders = {"Male", "Female", "Prefer not to say"};
+        GenderSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, genders));
+    }
+
+    //  Date Picker
+    private void setupDatePicker() {
+        DobText.setOnClickListener(v -> new DatePickerDialog(this, (view, year, month, day) -> {
+            calendar.set(year, month, day);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            DobText.setText(sdf.format(calendar.getTime()));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show());
+    }
+
+    //  Listeners
+    private void setupListeners() {
+        buttonAdd.setOnClickListener(v -> pickImage());
+        saveBtn.setOnClickListener(v -> saveData());
+    }
+
+    //  Image Picker
+    private void pickImage() {
+        Intent i = new Intent(Intent.ACTION_PICK);
+        i.setType("image/*");
+        resultLauncher.launch(i);
+    }
+
+    // Save Data
+    private void saveData() {
+
+        Map<String, Object> userDetails = new HashMap<>();
+
+        // Validation
+        if (NameText.getText().toString().trim().isEmpty()) {
+            NameText.setError("Required");
+            return;
+        }
+
+        // Data put
+        userDetails.put("Name", NameText.getText().toString().trim());
+        userDetails.put("City", cityText.getText().toString().trim());
+        userDetails.put("Phone", Phone.getText().toString().trim());
+        userDetails.put("BloodType", bloodSpinner.getText().toString());
+        userDetails.put("Gender", GenderSpinner.getText().toString());
+        userDetails.put("DOB", DobText.getText().toString());
+        userDetails.put("Disease", BloodDisease.getText().toString().trim());
+
+        // Get user email safely
+        if (firebaseAuth.getCurrentUser() == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String userEmail = firebaseAuth.getCurrentUser().getEmail();
+
+        if (userEmail == null) {
+            Toast.makeText(this, "Email not found", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DocumentReference docRef = db.collection("users").document(userEmail);
+
+        //  If image selected → upload
+        if (image != null) {
+
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID());
+
+            ref.putFile(image).addOnSuccessListener(task -> {
+                task.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+
+                    userDetails.put("imageUrl", uri.toString());
+                    saveToFirestore(docRef, userDetails);
+
+                });
+            }).addOnFailureListener(e -> {
+                Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show();
+            });
+
+        } else {
+            //  No image → direct save
+            saveToFirestore(docRef, userDetails);
+        }
+    }
+
+    //  Save to Firestore
+    private void saveToFirestore(DocumentReference docRef, Map<String, Object> data) {
+
+        docRef.set(data).addOnSuccessListener(unused -> {
+
+            Toast.makeText(this, "Saved Successfully", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, MainActivity.class));
+
+        }).addOnFailureListener(e -> {
+            Log.e(TAG, "Error saving data", e);
+        });
     }
 }

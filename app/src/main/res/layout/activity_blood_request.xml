@@ -1,118 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".BloodRequest">
+    android:layout_height="match_parent">
 
-
-    <EditText
-        android:id="@+id/TextFull_Name"
-        style="@style/detailsStyle"
-        android:layout_width="320dp"
-        android:background="@drawable/backgroundedit"
-        android:layout_height="55dp"
-        android:layout_marginTop="50dp"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Full Name"
-        android:inputType="text"
-        android:padding="10dp" />
-
-    <EditText
-        android:id="@+id/Text_Email"
-        style="@style/detailsStyle"
-        android:background="@drawable/backgroundedit"
-        android:layout_width="320dp"
-        android:layout_height="55dp"
-        android:drawableLeft="@drawable/email"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
-        android:padding="10dp" />
-
-    <EditText
-        android:id="@+id/Text_bloodType"
-        style="@style/detailsStyle"
-        android:layout_width="320dp"
-        android:background="@drawable/backgroundedit"
-        android:layout_height="55dp"
-        android:drawableLeft="@drawable/bloodtype"
-        android:drawablePadding="12dp"
-        android:ems="10"
-        android:hint="Blood Type"
-        android:inputType="text" />
-
-    <Spinner
-        android:id="@+id/Spinner_blood"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/bloodType"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="16dp"/>
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/Text_Phone"
-        style="@style/detailsStyle"
-        android:layout_width="320dp"
-        android:background="@drawable/backgroundedit"
-        android:layout_height="55dp"
-        android:drawableLeft="@drawable/phoneicon"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/requets_forText"
-        style="@style/detailsStyle"
-        android:layout_width="320dp"
-        android:background="@drawable/backgroundedit"
-        android:layout_height="55dp"
-        android:drawableLeft="@drawable/gender"
-        android:ems="10"
-        android:hint="Request for"
-        android:inputType="text" />
-
-    <Spinner
-        android:id="@+id/Spinner_requestFor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/requets_forText"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="16dp"/>
-
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="190dp"
-        android:layout_height="40dp"
-        android:background="@color/black"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:text="Save"
-        android:textColor="@color/white"
-        android:textAllCaps="true"
-        />
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-340dp"
-        android:layout_gravity="center">
-
-        <!-- Your existing layout components -->
-
-        <ProgressBar
-            android:id="@+id/BarProgress"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:visibility="gone" /> <!-- Initially hide the ProgressBar -->
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_header_red"
+                android:orientation="vertical">
 
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="Create Blood Request"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- HEADER -->
+
+
+            <!-- BLOOD TYPE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Select Blood Type"
+                android:textStyle="bold" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/gridLayout"
+                android:layout_marginTop="12dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="4"
+                android:useDefaultMargins="true">
+
+
+                <!-- Row 1 -->
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="A+"
+                    android:text="A+" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="A-"
+                    android:text="A-" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="B+"
+                    android:text="B+" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="B-"
+                    android:text="B-" />
+
+                <!-- Row 2 -->
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="AB+"
+                    android:text="AB+" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="AB-"
+                    android:text="AB-" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="O+"
+                    android:text="O+" />
+
+                <TextView
+                    style="@style/BloodBox"
+                    android:tag="O-"
+                    android:text="O-" />
+
+            </GridLayout>
+
+            <!-- NAME -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Full Name"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#D32F2F"
+                app:hintTextColor="#D32F2F">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- UNITS -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Units Needed"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#D32F2F">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/unitsEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- HOSPITAL -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Hospital"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#D32F2F">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hospitalEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- LOCATION -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Location"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#D32F2F">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/locationEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- PHONE -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="Contact Number"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="#D32F2F">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/phoneEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- URGENCY -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Urgency Level"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/urgencyGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Normal" />
+
+                <RadioButton android:text="Urgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton android:text="Critical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+            <!-- SUBMIT BUTTON -->
+            <Button
+                android:id="@+id/submitBtn"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#D32F2F"
+                android:text="Submit Request"
+                android:textColor="@android:color/white"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
